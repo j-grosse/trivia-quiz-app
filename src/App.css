@@ -5,6 +5,15 @@
   text-align: center;
 }
 
+h1 {
+  margin-bottom: 3rem;
+}
+
+.btn {
+  width: 12rem;
+  margin: 0 auto;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
