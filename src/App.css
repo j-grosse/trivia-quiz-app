@@ -3,6 +3,39 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  color: white;
+  background-color:rgb(101, 156, 0);
+
+}
+
+.col-12 {
+  background-color:rgba(236, 158, 13, 0.886);
+  /* background-image: url('./assets/hacker-wallpaper-1.jpg');
+  background-repeat: no-repeat;
+  background-size: cover; */
+}
+
+.questions {
+  margin: 0 20%;
+  color: white;
+}
+.answers {
+  display: flex;
+  justify-content: center;
+}
+
+.answers li {
+  margin: 20px 10px;
+}
+
+.userAnswer {
+  background-color: rgb(103, 157, 227);
+}
+
+ul {
+  list-style-type: none; /* Remove bullets */
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margins */
 }
 
 h1 {

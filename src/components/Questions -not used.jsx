@@ -1,15 +1,16 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import '../App.css';
 
 const url = 'https://wd40-trivia.onrender.com/api/questions';
 
 /** In this component useEffect and useState are used to fetch data
  *  from an external API and manage the component's state.
 
-The useEffect hook is used to fetch the data from the API when the component is mounted.
+The useEffect hook is used to fetch the data from the API when the app component is mounted.
 The empty dependency array [] passed to useEffect ensures that the effect only runs once
 when the component is mounted.
-When the (side)effect runs, it makes a GET request to the API using axios, and 
+When the (side)effect runs, it makes a GET request to the API using axios. 
 when the response is received, it updates the questions state using the 
 setQuestions function. */
 
@@ -18,7 +19,7 @@ const Questions = () => {
   const [answers, setAnswers] = useState([]);
   const [submit, setSubmit] = useState(false);
   const [score, setScore] = useState(0);
-  const [retry, setRetry] = useState(0);
+  const [retry, setRetry] = useState(false);
 
   // load correct answers
   useEffect(() => {
@@ -37,8 +38,14 @@ const Questions = () => {
       .get(url)
       .then((res) => setQuestions(res.data.map((q) => q.question)))
       .catch((err) => console.error(err));
-  }, [submit]);
+  }, [retry]);
 
+  const handleRetry = () => {
+    setSubmit(false);
+    retry ? setRetry(false) : setRetry(true);
+    console.log('handleRetry');
+  };
+  // questions answers submit score retry
   return submit ? (
     <>
       <p>
@@ -49,7 +56,7 @@ const Questions = () => {
           <li key={q}>{q}</li>
         ))}
       </ul>
-      <button onClick={() => setSubmit(false)}>Try again</button>
+      <button onClick={() => handleRetry()}>Try again</button>
     </>
   ) : (
     <>

@@ -29,6 +29,9 @@ body {
   place-items: center;
   min-width: 320px;
   /* min-height: 100vh; */
+  /* background-image: url('./1.jpg');
+  background-repeat: no-repeat;
+  background-size: cover; */
 }
 
 h1 {
@@ -46,8 +49,12 @@ button {
   font-family: inherit;
   background-color: #1a1a1a;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: border-color 0s;
 }
+button:active {
+  background-color: #646cff;
+}
+
 button:hover {
   border-color: #646cff;
 }

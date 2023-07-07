@@ -7,7 +7,7 @@ correctAnswer     the question's correctAnswer    String
 answers question  4 answers       Array
 userAnswer        the user choosed answer default to ""   String
 
-- Displaying questions: The application fetches a set of questions from hardcoded file (questions.js) OR external API and displays it for the user.
+- Displaying questions: The application fetches a set of questions from hardcoded file (questions.js) OR external API and displays it to the user.
 
 useEffect
 fetch / axios
@@ -24,7 +24,7 @@ set className="btn-info"
 - submit button
   <button className="btn-success" onClick="handleSubmit"></button>
   conditional rendering
-  
+
 - compare selections with correct answers
   compare UserAnswers & correctAnswer []
   map through answers
@@ -52,6 +52,13 @@ reset all states
 
 ---
 
+
+
+states in app.js
+state how many questions clicked
+object with questions and aswers
+
+
 Using questions.js render questions with its answers and the user should be able
 to choose one answer per question
 once all questions have been answered
@@ -74,3 +81,35 @@ https://wd40-trivia.onrender.com/
 Level 3
 ● Now that all questions are coming from the API lets change the UI allowing only one question to be displayed at a time.
 ● Once all questions are answered show the final score with the questions review
+
+
+
+
+
+  const QAblock = ({ question, answers, handleanswerselect }) => {
+    const handleSelect = (event) => {
+      const selectedTag = event.target;
+      setSelectedAnswer(selectedTag.innerHTML);
+
+      // invoke the callback function handleAnswerSelect in App.jsx:
+      handleanswerselect(selectedTag.innerHTML);
+    };
+
+    return (
+      <>
+        {question && <li key={uuidv4()}>{question}</li>}
+        {answers &&
+          answers.map((answerItem) => (
+            <li key={uuidv4()}>
+              <button
+                onClick={handleSelect}
+                className={selectedAnswer === answerItem ? 'userAnswer' : ''}
+              >
+                {answerItem}
+              </button>
+            </li>
+          ))}
+        <br />
+      </>
+    );
+  };
